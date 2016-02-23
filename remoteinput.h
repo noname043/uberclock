@@ -2,6 +2,7 @@
 #define _REMOTE_INPUT_h
 
 #include <IRremote.h>
+#include "timer.h"
 
 class RemoteInput
 {
@@ -43,6 +44,7 @@ private:
 private:
 	IRrecv _receiver;
 	decode_results _results;
+	Timer _debounceTimer;
 };
 
 #endif

@@ -1,7 +1,8 @@
 #include "remoteinput.h"
 
 RemoteInput::RemoteInput(int pin):
-_receiver(pin)
+_receiver(pin),
+_debounceTimer(500)
 {}
 
 void RemoteInput::init()
@@ -14,13 +15,17 @@ RemoteInput::Message RemoteInput::read()
 	Message message = None;
 	if (_receiver.decode(&_results))
 	{
-		message = translate(_results.value);
-		if (message == None)
+		if (_debounceTimer.isFinished())
 		{
-			Serial.print("RemoteInput::read() - value: ");
-			Serial.println(_results.value, HEX);
+			_debounceTimer.start();
+			message = translate(_results.value);
+			if (message == None)
+			{
+				Serial.print("RemoteInput::read() - value: ");
+				Serial.println(_results.value, HEX);
+			}
+			_receiver.resume();
 		}
-		_receiver.resume();
 	}
 	return message;
 }
