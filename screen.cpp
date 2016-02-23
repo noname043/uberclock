@@ -1,7 +1,8 @@
 #include "screen.h"
 #include "app.h"
 
-Screen::Screen()
+Screen::Screen():
+_lastMessage(RemoteInput::None)
 {
 }
 
@@ -24,6 +25,7 @@ ScreenId Screen::update()
 
 void Screen::onMessage(RemoteInput::Message message)
 {
+	_lastMessage = message;
 	if (message == RemoteInput::BacklightOnOff)
 	{
 		_backlight->setIsOn(!_backlight->isOn());

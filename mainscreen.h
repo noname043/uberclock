@@ -20,6 +20,7 @@ private:
 	void printDate();
 	void printTemperature();
 	void printDTElement(unsigned char x);
+	void onMessage(RemoteInput::Message message);
 
 private:
 	RTC_DS1307 *_clock;

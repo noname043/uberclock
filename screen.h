@@ -24,12 +24,17 @@ public:
 	virtual void init();
 	virtual ScreenId update();
 	virtual void display() = 0;
+
+protected:
 	virtual void onMessage(RemoteInput::Message message);
 
 protected:
-	RemoteInput *_remoteInput;
 	Adafruit_PCD8544 *_display;
 	Backlight *_backlight;
+	RemoteInput::Message _lastMessage;
+
+private:
+	RemoteInput *_remoteInput;
 };
 
 #endif

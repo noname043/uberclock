@@ -30,9 +30,13 @@ void MainScreen::display()
 
 void MainScreen::printTime()
 {
+	_display->setTextSize(2);
 	printDTElement(_currentTime.hour());
 	_display->print(':');
 	printDTElement(_currentTime.minute());
+
+	_display->setTextSize(1);
+	_display->setCursor(_display->getCursorX(), _display->getCursorY() + 8);
 	_display->print(':');
 	printDTElement(_currentTime.second());
 	_display->println();
