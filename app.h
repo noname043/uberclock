@@ -39,6 +39,8 @@ private:
 	Backlight _backlight;
 	Timer _backlightTimer;
 	TemperatureSensor _tempSensor;
+	Timer _fpsTimer;
+	int _frameCount;
 
 	ScreenId _currentScreen;
 	ScreenId _nextScreen;

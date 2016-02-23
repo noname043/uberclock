@@ -10,7 +10,9 @@ _backlight(DISPLAY_BACKLIGHT_PIN),
 _backlightTimer(DISPLAY_BACKLIGHT_DURATION),
 _tempSensor(TEMPERATURE_SENSOR_PIN),
 _currentScreen(ScreenId_Main),
-_nextScreen(ScreenId_Main)
+_nextScreen(ScreenId_Main),
+_fpsTimer(1000),
+_frameCount(0)
 {
 	if (!_instance)
 		_instance = this;
@@ -31,6 +33,8 @@ void Uberclock::init()
 		_screens[i]->init();
 
 	_backlight.setIsOn(true);
+
+	_fpsTimer.start();
 }
 
 void Uberclock::update()
@@ -44,4 +48,13 @@ void Uberclock::display()
 	_display.clearDisplay();
 	_screens[_currentScreen]->display();
 	_display.display();
+
+	++_frameCount;
+	if (_fpsTimer.isFinished())
+	{
+		_fpsTimer.start();
+		Serial.print("FPS: ");
+		Serial.println(_frameCount);
+		_frameCount = 0;
+	}
 }

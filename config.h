@@ -8,4 +8,7 @@
 // Temporary backlight turned on for 5 secs.
 #define DISPLAY_BACKLIGHT_DURATION 5000
 
+// Readings per second.
+#define TEMPERATURE_SENSOR_RPS 10
+
 #endif

@@ -1,6 +1,8 @@
 #ifndef _TIMER_h
 #define _TIMER_h
 
+#include <Arduino.h>
+
 // Stores time in ms.
 class Timer
 {

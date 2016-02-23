@@ -17,6 +17,8 @@ ScreenId MainScreen::update()
 {
 	Screen::update();
 
+	_temperatureSensor->update();
+
 	_currentTime = _clock->now();
 	return ScreenId_Main;
 }
