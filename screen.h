@@ -2,6 +2,7 @@
 #define _SCREEN_H_
 
 #include "remoteinput.h"
+#include "timer.h"
 
 class Adafruit_PCD8544;
 class Backlight;
@@ -30,11 +31,12 @@ protected:
 
 protected:
 	Adafruit_PCD8544 *_display;
-	Backlight *_backlight;
 	RemoteInput::Message _lastMessage;
 
 private:
 	RemoteInput *_remoteInput;
+	Backlight *_backlight;
+	Timer *_backlightTimer;
 };
 
 #endif

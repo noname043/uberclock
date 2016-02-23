@@ -7,6 +7,7 @@ Uberclock::Uberclock():
 _display(3, 4, 5, 6, 7),
 _remoteInput(REMOTE_PIN),
 _backlight(DISPLAY_BACKLIGHT_PIN),
+_backlightTimer(DISPLAY_BACKLIGHT_DURATION),
 _tempSensor(TEMPERATURE_SENSOR_PIN),
 _currentScreen(ScreenId_Main),
 _nextScreen(ScreenId_Main)

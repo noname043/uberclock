@@ -5,4 +5,7 @@
 #define DISPLAY_BACKLIGHT_PIN 2
 #define TEMPERATURE_SENSOR_PIN A0
 
+// Temporary backlight turned on for 5 secs.
+#define DISPLAY_BACKLIGHT_DURATION 5000
+
 #endif

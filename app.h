@@ -11,6 +11,7 @@
 #include "mainscreen.h"
 #include "menuscreen.h"
 #include "clocksettingsscreen.h"
+#include "timer.h"
 
 class Uberclock
 {
@@ -28,6 +29,7 @@ public:
 	Adafruit_PCD8544 *lcdDisplay() { return &_display; }
 	RemoteInput *remoteInput() { return &_remoteInput; }
 	Backlight *backlight() { return &_backlight; }
+	Timer *backlightTimer() { return &_backlightTimer; }
 	TemperatureSensor *temperatureSensor() { return &_tempSensor; }
 
 private:
@@ -35,6 +37,7 @@ private:
 	Adafruit_PCD8544 _display;
 	RemoteInput _remoteInput;
 	Backlight _backlight;
+	Timer _backlightTimer;
 	TemperatureSensor _tempSensor;
 
 	ScreenId _currentScreen;

@@ -12,6 +12,7 @@ void Screen::init()
 	_display = app->lcdDisplay();
 	_remoteInput = app->remoteInput();
 	_backlight = app->backlight();
+	_backlightTimer = app->backlightTimer();
 }
 
 ScreenId Screen::update()
@@ -19,6 +20,12 @@ ScreenId Screen::update()
 	RemoteInput::Message message = _remoteInput->read();
 	if (message != RemoteInput::None)
 		onMessage(message);
+
+	if (_backlight->isAutomatic() && _backlight->isOn() && _backlightTimer->isFinished())
+	{
+		_backlight->setIsOn(false);
+		_backlight->setIsAutomatic(false);
+	}
 
 	return ScreenId_None;
 }
@@ -32,6 +39,8 @@ void Screen::onMessage(RemoteInput::Message message)
 	}
 	else if (message == RemoteInput::BacklightOnce)
 	{
-		Serial.println("not supported yet");
+		_backlight->setIsOn(true);
+		_backlight->setIsAutomatic(true);
+		_backlightTimer->start();
 	}
 }

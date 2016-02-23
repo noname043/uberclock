@@ -3,7 +3,8 @@
 
 Backlight::Backlight(int pin) :
 _pin(pin),
-_isOn(false)
+_isOn(false),
+_isAutomatic(false)
 {
 	pinMode(pin, OUTPUT);
 	digitalWrite(pin, LOW);

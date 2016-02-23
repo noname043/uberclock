@@ -36,7 +36,7 @@ void MainScreen::printTime()
 	printDTElement(_currentTime.minute());
 
 	_display->setTextSize(1);
-	_display->setCursor(_display->getCursorX(), _display->getCursorY() + 8);
+	_display->setCursor(_display->getCursorX(), _display->getCursorY() + 7);
 	_display->print(':');
 	printDTElement(_currentTime.second());
 	_display->println();
@@ -62,4 +62,9 @@ void MainScreen::printDTElement(unsigned char x)
 	if (x < 10)
 		_display->print('0');
 	_display->print(x);
+}
+
+void MainScreen::onMessage(RemoteInput::Message message)
+{
+	Screen::onMessage(message);
 }
