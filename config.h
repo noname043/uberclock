@@ -9,6 +9,6 @@
 #define DISPLAY_BACKLIGHT_DURATION 5000
 
 // Readings per second.
-#define TEMPERATURE_SENSOR_RPS 10
+#define TEMPERATURE_SENSOR_RPS 20
 
 #endif

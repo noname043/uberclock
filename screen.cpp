@@ -36,6 +36,7 @@ void Screen::onMessage(RemoteInput::Message message)
 	if (message == RemoteInput::BacklightOnOff)
 	{
 		_backlight->setIsOn(!_backlight->isOn());
+		_backlight->setIsAutomatic(false);
 	}
 	else if (message == RemoteInput::BacklightOnce)
 	{
