@@ -15,10 +15,10 @@ public:
 	void display();
 
 	void onMessage(RemoteInput::Message message);
+	void onSwitchedTo();
 
 private:
 	Menu _menu;
-	ScreenId _nextScreen;
 };
 
 #endif

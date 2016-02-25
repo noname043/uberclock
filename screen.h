@@ -25,11 +25,14 @@ public:
 	virtual void init();
 	virtual ScreenId update();
 	virtual void display() = 0;
+	virtual void onSwitchedTo() = 0;
 
 protected:
 	virtual void onMessage(RemoteInput::Message message);
 
 protected:
+	ScreenId _nextScreen;
+
 	Adafruit_PCD8544 *_display;
 	RemoteInput::Message _lastMessage;
 

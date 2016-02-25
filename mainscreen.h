@@ -21,10 +21,9 @@ private:
 	void printTemperature();
 	void printDTElement(unsigned char x);
 	void onMessage(RemoteInput::Message message);
+	void onSwitchedTo();
 
 private:
-	ScreenId _nextScreen;
-
 	RTC_DS1307 *_clock;
 	DateTime _currentTime;
 	TemperatureSensor *_temperatureSensor;

@@ -7,10 +7,16 @@ ClockSettingsScreen::ClockSettingsScreen()
 
 ScreenId ClockSettingsScreen::update()
 {
-	return ScreenId_Main;
+	ScreenId tmp = Screen::update();
+	return tmp;
 }
 
 void ClockSettingsScreen::display()
 {
 
+}
+
+void ClockSettingsScreen::onSwitchedTo()
+{
+	_nextScreen = ScreenId_Main;//ScreenId_ClockSettings;
 }

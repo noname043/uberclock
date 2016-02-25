@@ -1,9 +1,9 @@
 #include "mainscreen.h"
 #include "app.h"
 
-MainScreen::MainScreen():
-_nextScreen(ScreenId_Main)
+MainScreen::MainScreen()
 {
+	_nextScreen = ScreenId_Main;
 }
 
 void MainScreen::init()
@@ -16,14 +16,9 @@ void MainScreen::init()
 
 ScreenId MainScreen::update()
 {
-	Screen::update();
-
+	ScreenId tmp = Screen::update();
 	_temperatureSensor->update();
-
 	_currentTime = _clock->now();
-
-	ScreenId tmp = _nextScreen;
-	_nextScreen = ScreenId_Main;
 	return tmp;
 }
 
@@ -82,4 +77,10 @@ void MainScreen::onMessage(RemoteInput::Message message)
 	default:
 		break;
 	}
+}
+
+void MainScreen::onSwitchedTo()
+{
+	_nextScreen = ScreenId_Main;
+	_display->setTextColor(BLACK);
 }

@@ -10,6 +10,9 @@ public:
 
 	ScreenId update();
 	void display();
+
+private:
+	void onSwitchedTo();
 };
 
 #endif

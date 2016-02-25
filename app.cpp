@@ -39,7 +39,11 @@ void Uberclock::init()
 
 void Uberclock::update()
 {
-	_currentScreen = _nextScreen;
+	if (_currentScreen != _nextScreen)
+	{
+		_screens[_nextScreen]->onSwitchedTo();
+		_currentScreen = _nextScreen;
+	}
 	_nextScreen = _screens[_currentScreen]->update();
 }
 

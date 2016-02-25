@@ -1,13 +1,14 @@
 #include "menuscreen.h"
 
 MenuScreen::MenuScreen():
-_menu(2),
-_nextScreen(ScreenId_Menu)
+_menu(2)
 {
 	_menu.option(0)->id = 0;
 	_menu.option(0)->name = "time settings";
 	_menu.option(1)->id = 1;
 	_menu.option(1)->name = "set alarm";
+
+	_nextScreen = ScreenId_Menu;
 }
 
 void MenuScreen::init()
@@ -18,11 +19,7 @@ void MenuScreen::init()
 
 ScreenId MenuScreen::update()
 {
-	Screen::update();
-
-	ScreenId tmp = _nextScreen;
-	_nextScreen = ScreenId_Menu;
-	return tmp;
+	return Screen::update();
 }
 
 void MenuScreen::display()
@@ -54,4 +51,9 @@ void MenuScreen::onMessage(RemoteInput::Message message)
 	default:
 		break;
 	}
+}
+
+void MenuScreen::onSwitchedTo()
+{
+	_nextScreen = ScreenId_Menu;
 }

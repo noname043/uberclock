@@ -2,6 +2,7 @@
 #include "app.h"
 
 Screen::Screen():
+_nextScreen(ScreenId_Main),
 _lastMessage(RemoteInput::None)
 {
 }
@@ -27,7 +28,7 @@ ScreenId Screen::update()
 		_backlight->setIsAutomatic(false);
 	}
 
-	return ScreenId_None;
+	return _nextScreen;
 }
 
 void Screen::onMessage(RemoteInput::Message message)
