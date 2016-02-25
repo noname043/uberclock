@@ -1,7 +1,8 @@
 #include "mainscreen.h"
 #include "app.h"
 
-MainScreen::MainScreen()
+MainScreen::MainScreen():
+_nextScreen(ScreenId_Main)
 {
 }
 
@@ -20,7 +21,10 @@ ScreenId MainScreen::update()
 	_temperatureSensor->update();
 
 	_currentTime = _clock->now();
-	return ScreenId_Main;
+
+	ScreenId tmp = _nextScreen;
+	_nextScreen = ScreenId_Main;
+	return tmp;
 }
 
 void MainScreen::display()
@@ -69,4 +73,13 @@ void MainScreen::printDTElement(unsigned char x)
 void MainScreen::onMessage(RemoteInput::Message message)
 {
 	Screen::onMessage(message);
+
+	switch (message)
+	{
+	case RemoteInput::KeyMenu:
+		_nextScreen = ScreenId_Menu;
+		break;
+	default:
+		break;
+	}
 }

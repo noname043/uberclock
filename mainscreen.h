@@ -23,6 +23,8 @@ private:
 	void onMessage(RemoteInput::Message message);
 
 private:
+	ScreenId _nextScreen;
+
 	RTC_DS1307 *_clock;
 	DateTime _currentTime;
 	TemperatureSensor *_temperatureSensor;
